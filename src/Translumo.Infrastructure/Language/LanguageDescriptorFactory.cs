@@ -16,6 +16,13 @@ namespace Translumo.Infrastructure.Language
                 },
                 new LanguageDescriptor()
                 {
+                    Language = Languages.German, Code = "de-DE", EasyOcrCode = "de", EasyOcrModel = "latin_g2",
+                    TesseractCode = "deu", IsoCode = "de", TextScorePredictorModel = "eng",
+                    SupportedNamedBlocks = new[] { "IsBasicLatin", "IsLatin1Supplement" }, UseEndPunctuation = true,
+                    UseWordTokenizer = false, UseSpaceRemover = false
+                },
+                new LanguageDescriptor()
+                {
                     Language = Languages.Russian, Code = "ru-RU", EasyOcrCode = "ru", EasyOcrModel = "cyrillic_g2",
                     TesseractCode = "rus", IsoCode = "ru", TextScorePredictorModel = "rus",
                     SupportedNamedBlocks = new[] { "IsCyrillic" }, UseEndPunctuation = true, UseWordTokenizer = false, UseSpaceRemover = false
@@ -43,7 +50,6 @@ namespace Translumo.Infrastructure.Language
                 },
                 new LanguageDescriptor() { Language = Languages.Italian, Code = "it-IT", IsoCode = "it", TranslationOnly = true },
                 new LanguageDescriptor() { Language = Languages.French, Code = "fr-FR", IsoCode = "fr", TranslationOnly = true },
-                new LanguageDescriptor() { Language = Languages.German, Code = "de-DE", IsoCode = "de", TranslationOnly = true },
                 new LanguageDescriptor() { Language = Languages.Spanish, Code = "es-ES", IsoCode = "es", TranslationOnly = true },
                 new LanguageDescriptor() { Language = Languages.Portuguese, Code = "pt-PT", IsoCode = "pt", TranslationOnly = true },
                 new LanguageDescriptor() { Language = Languages.Vietnamese, Code = "vi-VN", IsoCode = "vi", TranslationOnly = true },

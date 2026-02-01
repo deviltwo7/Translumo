@@ -25,7 +25,25 @@ namespace Translumo.Translation
 
         public ITranslator CreateTranslator(TranslationConfiguration translatorConfiguration)
         {
-            switch (translatorConfiguration.Translator)
+            if (translatorConfiguration.Translator == Translators.MultiSource)
+            {
+                var translators = new[]
+                {
+                    CreateSingleTranslator(Translators.Deepl, translatorConfiguration),
+                    CreateSingleTranslator(Translators.Google, translatorConfiguration),
+                    CreateSingleTranslator(Translators.Yandex, translatorConfiguration),
+                    CreateSingleTranslator(Translators.Papago, translatorConfiguration)
+                };
+
+                return new MultiSourceTranslator(translators, _logger);
+            }
+
+            return CreateSingleTranslator(translatorConfiguration.Translator, translatorConfiguration);
+        }
+
+        private ITranslator CreateSingleTranslator(Translators translator, TranslationConfiguration translatorConfiguration)
+        {
+            switch (translator)
             {
                 case Translators.Deepl:
                     return new DeepLTranslator(translatorConfiguration, _languageService, _logger);
@@ -36,7 +54,7 @@ namespace Translumo.Translation
                 case Translators.Google:
                     return new GoogleTranslator(translatorConfiguration, _languageService, _logger);
                 default:
-                    throw new NotSupportedException();
+                    throw new ArgumentOutOfRangeException(nameof(translator), translator, "Unknown translator");
             }
         }
     }
