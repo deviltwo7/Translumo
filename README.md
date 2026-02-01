@@ -44,9 +44,9 @@ Version 1.0.x includes many changes and improvements compared to versions 0.9.x.
 
 - **Integrated modern OCR engines**: Windows OCR (recommended), Tesseract 5.2 (legacy), EasyOCR (legacy)
 
-- **Available translators**: DeepL (recommended), Google Translate, Yandex Translate, Naver Papago.
+- **Available translators**: DeepL (recommended), Google Translate, Yandex Translate, Naver Papago, MultiSource (automatic fallback).
 
-- **Supported recognition languages**: English, Russian, Japanese, Chinese (Simplified), Korean.
+- **Supported recognition languages**: English, German, Russian, Japanese, Chinese (Simplified), Korean.
 
 - **Supported translation languages**: English, Russian, Japanese, Chinese (Simplified), Korean, French, Spanish, German, Portuguese, Italian, Vietnamese, Thai, Turkish, Arabic, Greek, Brazilian Portuguese, Polish, Belarusian, Persian, Indonesian, Bulgarian, Czech, Danish, Estonian, Finnish, Hungarian, Lithuanian, Latvian, Dutch, Romanian, Slovak, Slovenian, Swedish, Ukrainian.
 
@@ -61,6 +61,33 @@ Version 1.0.x includes many changes and improvements compared to versions 0.9.x.
 - NVIDIA GPU with CUDA SDK 11.8 support (GTX 750, 8xxM, 9xx series or newer)
 - 8 GB RAM
 - At least 5 GB of free storage space
+
+## Setup (Windows OCR + German → English quick start)
+
+Translumo works best with Windows OCR. Make sure the Windows OCR language packs are installed for every language you plan to recognize. The script below installs the OCR packs for all recognition languages supported by Translumo (including German).  
+
+**PowerShell (run as Administrator):**
+
+```powershell
+.\scripts\install-windows-ocr-languages.ps1
+```
+
+If you'd rather install manually, install the following Windows capabilities:
+
+- `Language.OCR~~~en-US~0.0.1.0`
+- `Language.OCR~~~de-DE~0.0.1.0`
+- `Language.OCR~~~ru-RU~0.0.1.0`
+- `Language.OCR~~~ja-JP~0.0.1.0`
+- `Language.OCR~~~zh-CN~0.0.1.0`
+- `Language.OCR~~~ko-KR~0.0.1.0`
+
+**German → English translation with multiple sources**
+
+1. Open **Settings → Languages**.
+2. Set **Translate From** to **German** and **Translate To** to **English**.
+3. Choose **MultiSource** in the **Translator** dropdown to automatically try multiple services and return the first consistent result.
+
+For the best OCR accuracy, leave only **WindowsOCR** enabled under **Settings → OCR**.
 
 ## How to Use
 
@@ -133,4 +160,3 @@ A: Ensure the application path contains only Latin letters.
 - [Lookupper](https://lookupper.com) — on-screen dictionary and translator for language learning.
 - [ScreTran](https://github.com/PavlikBender/ScreTran) — simple screen translator.
 - [ScreenTranslator](https://github.com/OneMoreGres/ScreenTranslator) - screen capture, OCR and translation tool.
-
